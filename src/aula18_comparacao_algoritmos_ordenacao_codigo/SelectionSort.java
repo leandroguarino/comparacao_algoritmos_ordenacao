@@ -10,7 +10,8 @@ package aula18_comparacao_algoritmos_ordenacao_codigo;
  * @author leandro
  */
 public class SelectionSort {
-    public static int[] sort(int[] vetor){
+    public static Resultado sort(int[] vetor){
+        int trocas = 0;
         //Selection sort O(N^2)
         int posicao_menor, aux;
         for(int i=0; i < vetor.length; i++){ //O(N)
@@ -23,7 +24,8 @@ public class SelectionSort {
             aux = vetor[posicao_menor];
             vetor[posicao_menor] = vetor[i];
             vetor[i] = aux;
+            trocas++;
         }
-        return vetor;
+        return new Resultado(vetor, trocas);
     }
 }

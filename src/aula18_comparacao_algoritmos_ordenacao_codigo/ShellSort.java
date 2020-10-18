@@ -10,7 +10,8 @@ package aula18_comparacao_algoritmos_ordenacao_codigo;
  * @author leandro
  */
 public class ShellSort {
-    public static int[] sort(int[] vetor){
+    public static Resultado sort(int[] vetor){
+        int trocas = 0;
         int h = 1;
         int n = vetor.length;
         while(h < n){
@@ -26,11 +27,13 @@ public class ShellSort {
                 while(j >= h && vetor[j - h] > elemento){
                     vetor[j] = vetor[j - h];
                     j = j - h;
+                    trocas++;
                 }
                 vetor[j] = elemento;
+                trocas++;
             }
             h = h / 2;
         }
-        return vetor;
+        return new Resultado(vetor, trocas);
     }
 }

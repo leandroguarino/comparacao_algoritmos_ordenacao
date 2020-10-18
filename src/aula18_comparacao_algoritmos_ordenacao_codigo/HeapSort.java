@@ -10,9 +10,13 @@ package aula18_comparacao_algoritmos_ordenacao_codigo;
  * @author leandro
  */
 public class HeapSort {
-    public static int[] sort(int[] vetor){
+    
+    static int trocas = 0;
+    
+    public static Resultado sort(int[] vetor){
         //Heap Sort
         int n = vetor.length;
+        
         
         for(int i = n / 2 - 1; i >= 0; i--){
             aplicarHeap(vetor, n, i);
@@ -22,11 +26,11 @@ public class HeapSort {
             int aux = vetor[0];
             vetor[0] = vetor[j];
             vetor[j] = aux;
+            trocas++;
             
             aplicarHeap(vetor, j, 0);
         }
-        
-        return vetor;
+        return new Resultado(vetor, trocas);
     }
     
     private static void aplicarHeap(int[] vetor, int n, int i){
@@ -45,6 +49,7 @@ public class HeapSort {
             int aux = vetor[i];
             vetor[i] = vetor[raiz];
             vetor[raiz] = aux;
+            trocas++;
             
             aplicarHeap(vetor, n, raiz);
         }

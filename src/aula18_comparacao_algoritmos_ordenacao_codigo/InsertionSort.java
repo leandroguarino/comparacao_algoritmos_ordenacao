@@ -10,7 +10,8 @@ package aula18_comparacao_algoritmos_ordenacao_codigo;
  * @author leandro
  */
 public class InsertionSort {
-    public static int[] sort(int[] vetor){
+    public static Resultado sort(int[] vetor){
+        int trocas = 0; 
         int aux, j;
         for(int i=1; i < vetor.length; i++){
             aux = vetor[i];
@@ -18,9 +19,11 @@ public class InsertionSort {
             while(j >= 0 && vetor[j] > aux){
                 vetor[j+1] = vetor[j];
                 j--;
+                trocas++;
             }
             vetor[j+1] = aux;
+            trocas++;
         }
-        return vetor;
+        return new Resultado(vetor, trocas);
     }
 }

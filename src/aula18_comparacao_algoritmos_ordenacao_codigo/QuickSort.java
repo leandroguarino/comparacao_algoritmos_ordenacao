@@ -10,20 +10,23 @@ package aula18_comparacao_algoritmos_ordenacao_codigo;
  * @author leandro
  */
 public class QuickSort {
-    public static int[] sort(int[] vetor, int esquerda, int direita){
+    
+    static int trocas = 0;
+    
+    public static Resultado sort(int[] vetor, int esquerda, int direita){
         if (esquerda < direita){
             int p = particao(vetor, esquerda, direita);
             sort(vetor, esquerda, p);
             sort(vetor, p + 1, direita);
         }
-        return vetor;
+        return new Resultado(vetor, trocas);
     }    
     
     private static int particao(int[] vetor, int esquerda, int direita){
         int meio = (int) (esquerda + direita) / 2;
         int pivot = vetor[meio];
         int i = esquerda - 1;
-        int j = direita + 1;
+        int j = direita;
         while(true){
             do{
                 i++;
@@ -37,6 +40,7 @@ public class QuickSort {
             int aux = vetor[i];
             vetor[i] = vetor[j];
             vetor[j] = aux;
+            trocas++;
         }
     }
 }

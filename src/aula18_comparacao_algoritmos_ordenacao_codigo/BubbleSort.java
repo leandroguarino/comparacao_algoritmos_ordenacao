@@ -10,7 +10,8 @@ package aula18_comparacao_algoritmos_ordenacao_codigo;
  * @author leandro
  */
 public class BubbleSort {
-    public static int[] sort(int[] vetor){
+    public static Resultado sort(int[] vetor){
+        int trocas = 0;
         //BUBBLE SORT O(N^2)
         int aux;
         for(int i = 0; i < vetor.length; i++){ // O(N)
@@ -19,9 +20,10 @@ public class BubbleSort {
                     aux = vetor[j];
                     vetor[j] = vetor[i];
                     vetor[i] = aux;
+                    trocas++;
                 }
             }
         }
-        return vetor;
+        return new Resultado(vetor, trocas);
     }
 }
